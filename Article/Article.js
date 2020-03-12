@@ -158,15 +158,15 @@ function createComponent (componentData) {
 
   //Step 2
   
-  //componentButton.addEventListener('click', event => {
-    //component.classList.toggle('article-open');
-  //})
+  componentButton.addEventListener('click', event => {
+    component.classList.toggle('article-open');
+  })
 
   //Step 2 - Modified 
 
-  component.addEventListener('click', event => {
-    component.classList.toggle('article-open');
-  })
+  //component.addEventListener('click', event => {
+    //component.classList.toggle('article-open');
+  //})
   //Step 3
 
   return component;
