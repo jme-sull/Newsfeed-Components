@@ -85,10 +85,19 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  {
+    title: 'Jamie writes an article',
+    date: 'March 11, 2020',
+    firstParagraph: 'This is the first paragraph',
+    secondParagraph: 'This is the second paragraph',
+    thirdParagraph: 'This is the third paragraph'
   }
+  
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/* Step 1: Create a function that cr;eates a component. You will want your component to look like the template below: 
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -113,4 +122,62 @@ const data = [
 
 */
 
-some code 
+
+// Step 1
+
+function createComponent (componentData) {
+
+  const component = document.createElement('div');
+  const componentTitle = document.createElement('h2');
+  const componentDate = document.createElement('p');
+  const componentFirstParagraph = document.createElement('p');
+  const componentSecondParagraph = document.createElement('p');
+  const componentThirdParagraph = document.createElement('p');
+  const componentButton = document.createElement('span');
+
+  component.appendChild(componentTitle);
+  component.appendChild(componentDate);
+  component.appendChild(componentDate);
+  component.appendChild(componentFirstParagraph);
+  component.appendChild(componentSecondParagraph);
+  component.appendChild(componentSecondParagraph);
+  component.appendChild(componentThirdParagraph);
+  component.appendChild(componentButton);
+
+  component.classList.add('article');
+  componentDate.classList.add('date');
+  componentButton.classList.add('expandButton');
+
+  componentTitle.textContent = componentData.title;
+  componentDate.textContent = componentData.date;
+  componentFirstParagraph.textContent = componentData.firstParagraph;
+  componentSecondParagraph.textContent = componentData.secondParagraph;
+  componentThirdParagraph.textContent = componentData.thirdParagraph;
+  //adding text to the button so I can see it
+  componentButton.textContent = 'Read More';
+
+  //Step 2
+  
+  //componentButton.addEventListener('click', event => {
+    //component.classList.toggle('article-open');
+  //})
+
+  //Step 2 - Modified 
+
+  component.addEventListener('click', event => {
+    component.classList.toggle('article-open');
+  })
+  //Step 3
+
+  return component;
+
+
+}
+
+//Step 4
+const articles = document.querySelector('.articles')
+
+data.forEach(data => {
+  articles.appendChild(createComponent(data))
+});
+
