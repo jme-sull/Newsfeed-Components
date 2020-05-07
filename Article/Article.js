@@ -90,14 +90,7 @@ const data = [
 
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
 
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
-
-    {three separate paragraph elements}
-
-    <span class='expandButton'></span>
-  </div>
+  
 
   Hint: You will need to use createElement more than once here!
 
@@ -111,3 +104,64 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+//Step One
+
+// <div class="article">
+//     <h2>{title of the article}</h2>
+//     <p class="date">{date of the article}</p>
+
+//     {three separate paragraph elements}
+
+//     <span class='expandButton'></span>
+//   </div>
+
+function articleMaker (dataObject) {
+
+  const { title, date, firstParagraph, secondParagraph, thirdParagraph } = dataObject
+
+ 
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const paragraphOne = document.createElement('p')
+  const paragraphTwo = document.createElement('p')
+  const paragraphThree = document.createElement('p')
+  const expandButton = document.createElement('button')
+
+  article.appendChild(articleTitle)
+  article.appendChild(articleDate)
+  article.appendChild(paragraphOne)
+  article.appendChild(paragraphTwo)
+  article.appendChild(paragraphThree)
+  article.appendChild(expandButton)
+
+  article.classList.add('article')
+  articleDate.classList.add('date')
+  expandButton.classList.add('expandButton')
+
+  articleTitle.textContent = title
+  articleDate.textContent = date
+  paragraphOne.textContent = firstParagraph
+  paragraphTwo.textContent = secondParagraph
+  paragraphThree.textContent = thirdParagraph
+  expandButton.textContent = 'Read'
+
+  expandButton.addEventListener('click', (event) => {
+    article.classList.toggle('article-open')
+  })
+
+  
+  
+  return article 
+  
+
+}
+
+const articlesContainer = document.querySelector('.articles')
+
+data.forEach(item => {
+  const newArticle = articleMaker(item)
+  articlesContainer.appendChild(newArticle)
+})
+
